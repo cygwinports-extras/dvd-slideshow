@@ -1,0 +1,24 @@
+NAME="dvd-slideshow"
+VERSION=0.8.4-2
+RELEASE=1
+CATEGORY="Video"
+SUMMARY="Creates slideshow-style DVD videos from pictures"
+DESCRIPTION="dvd-slideshow is a group of Linux commandline programs that
+creates a slideshow-style video from groups of pictures. Slideshow videos can
+be made from a directory or some online photo albums. You can add fancy effects
+along with audio to make your slideshows even nicer. These slideshow can be in
+flash video format, MP4, or DVD-compatible mpeg2 video. There is also a script
+which generates a menu for your DVD (dvd-menu)."
+HOMEPAGE="http://dvd-slideshow.sourceforge.net/"
+SRC_URI="mirror://sourceforge/dvd-slideshow/${NAME}-${VERSION}.tar.gz"
+
+dvd_slideshow_REQUIRES="dvdauthor faad2 ffmpeg ImageMagick lame mjpegtools mkisofs toolame vorbis-tools"
+
+src_compile() { :; }
+
+src_install() {
+	cd ${S}
+	dobin dvd-slideshow dvd-menu gallery1-to-slideshow jigl2slideshow dir2slideshow
+	dodoc doc/changelog.txt
+	doman man/*.1
+}
